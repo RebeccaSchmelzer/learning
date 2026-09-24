@@ -2,29 +2,25 @@
 
 A home for focused, hands-on learning paths.
 
-## Getting started
+## Current topic
 
-Choose a topic, then create a learning path tailored to your goals, experience, and available time. Each path should include:
+### APIs
 
-- A clear outcome and time budget
-- Official documentation and other primary sources
-- Short reading and code investigation tasks
-- Exercises that build from prediction and tracing to practice
-- A small final project or demonstration
-- Notes on what to study next
+Start with the [API learning path](apis/learning-path.md).
 
-## Suggested structure
+The path assumes beginner-level API knowledge and five hours over one week. It combines official documentation, request tracing, live API calls, debugging, API design, and a small FastAPI project.
 
-Add topic-specific folders as you choose what to learn:
+## Repository structure
 
 ```text
 learning/
   README.md
-  <topic>/
+  apis/
     learning-path.md
+    exercises.md
     notes.md
-    exercises/
     project/
+      README.md
+      main.py
+      requirements.txt
 ```
-
-No topic has been selected yet, so this repository is intentionally a clean starting point.
