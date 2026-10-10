@@ -4,7 +4,7 @@ Use this file for predictions and observations. The prediction is the important 
 
 ## Session 1: first exchange
 
-- Client:
+- Client: 
 - Server:
 - Resource:
 - Predicted method:
@@ -33,12 +33,12 @@ Copy this block for every experiment.
 ## Session 3: failure diagnosis
 
 | Scenario | First thing to inspect | Likely meaning | Next test |
-|---|---|---|---|
-| 401 | | | |
-| 404 | | | |
-| 422 | | | |
-| 429 | | | |
-| 500 | | | |
+| -------- | ---------------------- | -------------- | --------- |
+| 401      |                        |                |           |
+| 404      |                        |                |           |
+| 422      |                        |                |           |
+| 429      |                        |                |           |
+| 500      |                        |                |           |
 
 ## Session 4: endpoint checklist
 

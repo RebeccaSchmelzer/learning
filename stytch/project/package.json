@@ -1,0 +1,16 @@
+{
+  "name": "stytch-one-hour-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/node": "^26.6.4",
+    "dotenv": "^18.0.5",
+    "stytch": "^14.2.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

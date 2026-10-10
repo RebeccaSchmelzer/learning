@@ -62,6 +62,9 @@ A home for focused, hands-on learning paths.
   - API versioning
   - ledgers / double-entry bookkeeping basics
   - GIT
+  - vercel
+  - agent loops
+  - mcps
 
 Start with the [API learning path](apis/learning-path.md).
 
