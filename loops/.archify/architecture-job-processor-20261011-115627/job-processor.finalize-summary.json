@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/candidate.json",
+    "sha256": "a743e5adfcf3e6a2049fae74b4adb73c2bbdecd82d23145f9ad95f5be6124cef",
+    "bytes": 4230
+  },
+  "artifact": {
+    "path": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/job-processor.html",
+    "sha256": "f94c664454313b3ea41080bbb13bd8cf33f68bff125fd93a279106c4782c1038",
+    "bytes": 754016
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/job-processor.finalize.json",
+    "summaryReceipt": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/job-processor.finalize-summary.json",
+    "browserCheckReceipt": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/job-processor.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-11T15:57:47.226Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 13287,
+  "layoutReviewRecommendation": {
+    "action": "inspect-leading-space",
+    "evidence": {
+      "measured": true,
+      "emptyTopPx": 206,
+      "emptyTopRatio": 0.331,
+      "occupiedTop": 206,
+      "viewBoxTop": 0,
+      "canvasHeight": 622,
+      "typicalNodeHeight": 84,
+      "reviewSuggested": true
+    },
+    "reason": "Measured content, including routes and labels, leaves a large empty area above the diagram. This is a composition suggestion, not a failed gate.",
+    "repair": "Check whether that leading space is intentional. If not, reposition the connected scene nearer the canvas origin while retaining room for its actual boundaries, labels and return routes. Preserve all meaning and user-fixed geometry, then rerun finalize. No screenshot is required."
+  }
+}

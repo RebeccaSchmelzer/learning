@@ -6,6 +6,10 @@ A home for focused, hands-on learning paths.
 
 ### APIs
 
+### TypeSafe AI + Jev
+
+A two-hour introduction to typed AI decisions, uncertainty, and a small ticket router. Start with the [learning path](typesafe-ai/learning-path.md), use the [exercise worksheet](typesafe-ai/exercises.md), and run the [starter project](typesafe-ai/project/README.md). The offline examples need no account or additional packages.
+
 ## Topics I want to learn
 ### pubsub
 ### coding fundamentals
@@ -65,6 +69,8 @@ A home for focused, hands-on learning paths.
   - vercel
   - agent loops
   - mcps
+  - harnesses
+  - guardrails
 
 Start with the [API learning path](apis/learning-path.md).
 
@@ -83,4 +89,10 @@ learning/
       README.md
       main.py
       requirements.txt
+  typesafe-ai/
+    learning-path.md
+    exercises.md
+    project/
+      README.md
+      jev_lab.py
 ```

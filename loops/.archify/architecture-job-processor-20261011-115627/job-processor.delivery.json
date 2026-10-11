@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f5b421bc-2da9-452a-8d41-b01c7c75b454",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/candidate.json",
+  "output": "/Users/rebeccaschmelzer/learning/loops/.archify/architecture-job-processor-20261011-115627/job-processor.html",
+  "specification": {
+    "sha256": "e7a3045a6289a1e0016de0c71b2abe3b41195b84e4d1104d550424b52832ee03",
+    "bytes": 4230
+  },
+  "artifact": {
+    "sha256": "7e08f3fe0db5c66b7e93464fadf0c0f990b8c47cb5ebc3544d39ee3afa3b9fd2",
+    "bytes": 754014
+  }
+}

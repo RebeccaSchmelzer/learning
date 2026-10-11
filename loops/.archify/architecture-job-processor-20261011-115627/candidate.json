@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "How the Two-Component Job Processor Works",
+    "locale": "en",
+    "output": ".archify/architecture-job-processor-20261011-115627/job-processor.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/RebeccaSchmelzer/learning.git",
+      "link_mode": "local-only",
+      "revision": "59b24675ffe461c34c805375410f408aabd1a2a1"
+    }
+  },
+  "components": [
+    {
+      "id": "client",
+      "type": "external",
+      "label": "Client",
+      "sublabel": "curl, app, or browser",
+      "pos": [40, 140],
+      "size": [150, 72],
+      "sources": [
+        { "path": "api.py", "line": 22, "end_line": 75, "label": "HTTP routes" }
+      ]
+    },
+    {
+      "id": "producerApi",
+      "type": "backend",
+      "label": "Producer API",
+      "sublabel": "HTTP process :8000",
+      "tag": "component 1",
+      "pos": [330, 134],
+      "size": [180, 84],
+      "sources": [
+        { "path": "api.py", "line": 15, "end_line": 75, "label": "validate + enqueue" },
+        { "path": "api.py", "line": 92, "end_line": 127, "label": "JSON server" }
+      ]
+    },
+    {
+      "id": "jobsDb",
+      "type": "database",
+      "label": "SQLite jobs table",
+      "sublabel": "durable shared queue",
+      "tag": "data/jobs.db",
+      "pos": [680, 130],
+      "size": [190, 92],
+      "sources": [
+        { "path": "queue_store.py", "line": 26, "end_line": 98, "label": "schema + API writes" },
+        { "path": "queue_store.py", "line": 100, "end_line": 213, "label": "claim + outcomes" }
+      ]
+    },
+    {
+      "id": "backgroundWorker",
+      "type": "backend",
+      "label": "Background Worker",
+      "sublabel": "independent polling process",
+      "tag": "component 2",
+      "pos": [1040, 130],
+      "size": [200, 92],
+      "sources": [
+        { "path": "worker.py", "line": 36, "end_line": 81, "label": "worker loop" },
+        { "path": "config.py", "line": 17, "end_line": 18, "label": "poll + lease settings" }
+      ]
+    },
+    {
+      "id": "taskHandlers",
+      "type": "backend",
+      "label": "Task Handlers",
+      "sublabel": "uppercase • reverse • word count",
+      "pos": [1040, 350],
+      "size": [200, 84],
+      "sources": [
+        { "path": "worker.py", "line": 16, "end_line": 33, "label": "task functions" },
+        { "path": "worker.py", "line": 58, "end_line": 70, "label": "dispatch + result" }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "submitAndPoll",
+      "from": "client",
+      "to": "producerApi",
+      "label": "POST job • GET status",
+      "variant": "emphasis"
+    },
+    {
+      "id": "createAndRead",
+      "from": "producerApi",
+      "to": "jobsDb",
+      "label": "insert / read job record"
+    },
+    {
+      "id": "claimReadyJob",
+      "from": "jobsDb",
+      "to": "backgroundWorker",
+      "label": "poll + atomic claim",
+      "variant": "emphasis"
+    },
+    {
+      "id": "executeTask",
+      "from": "backgroundWorker",
+      "to": "taskHandlers",
+      "label": "run selected task"
+    },
+    {
+      "id": "recordOutcome",
+      "from": "backgroundWorker",
+      "to": "jobsDb",
+      "label": "complete • retry • fail",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "1 — API produces the job",
+      "items": [
+        "Validates task, payload.text, and max_attempts",
+        "Stores status=queued and immediately returns 202 + job ID",
+        "GET /jobs/{id} reads the same record for progress"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "2 — Worker consumes the job",
+      "items": [
+        "Polls independently; the API never executes the task",
+        "BEGIN IMMEDIATE makes the claim exclusive across workers",
+        "Runs the matching handler and captures its result"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "3 — The record becomes the answer",
+      "items": [
+        "Success → completed with JSON result",
+        "Error → queued after 2 seconds until max attempts, then failed",
+        "Expired 30-second worker lease → recovered or failed"
+      ]
+    }
+  ]
+}
