@@ -1,0 +1,30 @@
+{
+  "model": "jev-fixture-fabricated",
+  "answers": {
+    "risk": {
+      "type": "score",
+      "score": 2.0,
+      "legend": {
+        "0": "Low: comments, documentation, or cosmetic changes; no behavior changes.",
+        "1": "Moderate: narrow behavior change with limited impact and an obvious rollback.",
+        "2": "High: broad behavior changes, data mutations, or potentially disruptive changes.",
+        "3": "Critical: likely severe outage, irreversible data loss, or security compromise."
+      },
+      "probabilities": {
+        "0": 0,
+        "1": 0.1,
+        "2": 0.8,
+        "3": 0.1
+      },
+      "confidence": 0.9
+    },
+    "security_sensitive": {
+      "type": "noul",
+      "noul": 0.95
+    }
+  },
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  }
+}
